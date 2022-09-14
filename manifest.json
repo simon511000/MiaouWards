@@ -1,0 +1,19 @@
+{
+    "name": "MiaouWards",
+    "description": "Surf automatiquement sur bing pour compléter les Rewards",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "permissions": ["<all_urls>", "tabs", "activeTab", "webRequest", "webRequestBlocking", "webNavigation"],
+    "background" : {
+      "scripts" : ["dist/js/background.js"]
+    },
+    "browser_action": {
+    },
+    "browser_specific_settings": {
+        "gecko": {
+          "id": "miaouwards@simon511000.fr",
+          "strict_min_version": "48.0",
+          "update_url": "https://miaouwards.simon511000.fr/updates.json"
+        }
+    }      
+  }
