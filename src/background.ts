@@ -48,23 +48,25 @@ function browseNewPage(tabId: number, changeInfo: browser.Tabs.OnUpdatedChangeIn
     browser.tabs.onUpdated.removeListener(browseNewPage);
     browser.webRequest.onBeforeRequest.removeListener(onBeforeSendHeaders);
   } else {
-    let pageRequest = getNextRequest();
-    let userAgentChanged = pageRequest.userAgent !== currentPageRequest.userAgent;
-    currentPageRequest = pageRequest;
-
-    if(userAgentChanged) {
-      console.error('changed');
-
-      if (browser.webRequest.onBeforeRequest.hasListener(onBeforeSendHeaders)) {
-        browser.webRequest.onBeforeRequest.removeListener(onBeforeSendHeaders);
+    setTimeout(() => {
+      let pageRequest = getNextRequest();
+      let userAgentChanged = pageRequest.userAgent !== currentPageRequest.userAgent;
+      currentPageRequest = pageRequest;
+  
+      if(userAgentChanged) {
+        console.error('changed');
+  
+        if (browser.webRequest.onBeforeRequest.hasListener(onBeforeSendHeaders)) {
+          browser.webRequest.onBeforeRequest.removeListener(onBeforeSendHeaders);
+        }
+  
+        browser.webRequest.onBeforeSendHeaders.addListener(
+          onBeforeSendHeaders,
+          {urls: ["<all_urls>"]}, ["blocking", "requestHeaders"]
+        );
       }
-
-      browser.webRequest.onBeforeSendHeaders.addListener(
-        onBeforeSendHeaders,
-        {urls: ["<all_urls>"]}, ["blocking", "requestHeaders"]
-      );
-    }
-    browser.tabs.update(tabSurfId, {url: currentPageRequest.url});
+      browser.tabs.update(tabSurfId, {url: currentPageRequest.url});
+    }, 1000);
   }
 }
 

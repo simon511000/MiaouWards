@@ -1,6 +1,6 @@
 export const surfTypes: Array<{numberOfSearchs: number, userAgent: string}> = [
     {
-        numberOfSearchs: 20,
+        numberOfSearchs: 24,
         userAgent: 'Mozilla/5.0 (Linux; Android 11; M2102J20SG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Mobile Safari/537.36 EdgA/97.0.1072.78'
     },
     {
