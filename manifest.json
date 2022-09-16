@@ -1,9 +1,9 @@
 {
     "name": "MiaouWards",
-    "description": "Surf automatiquement sur bing pour compléter les Rewards",
+    "description": "Récupère les cookies pour MiaouWards",
     "version": "1.0.0",
     "manifest_version": 2,
-    "permissions": ["<all_urls>", "tabs", "activeTab", "webRequest", "webRequestBlocking", "webNavigation"],
+    "permissions": ["cookies", "downloads", "*://*.bing.com/*"],
     "background" : {
       "scripts" : ["dist/js/background.js"]
     },
