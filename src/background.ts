@@ -11,6 +11,11 @@ browser.browserAction.onClicked.addListener(async function() {
             name: '_U',
             domain: '.bing.com',
             value: (await browser.cookies.get({name: '_U', url: 'https://bing.com'})).value
+        },
+        {
+            name: 'KievRPSSecAuth',
+            domain: '.bing.com',
+            value: (await browser.cookies.get({name: 'KievRPSSecAuth', url: 'https://bing.com'})).value
         }
     ]
 
